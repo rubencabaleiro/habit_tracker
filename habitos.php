@@ -1,7 +1,8 @@
 <html>
 <head>
 	<title>Habitos</title>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
 </head>
 <body>
 	
@@ -30,15 +31,22 @@
 	<?php
 		$lectura = "SELECT * FROM Habitos;";
 		$habitos = mysqli_query($conn, $lectura);
-		echo "Numero de habitos: " . mysqli_num_rows($habitos) . "<br>";
+		
+		if(mysqli_fetch_array($habitos) > 0) {
+			echo "<ul class=\"list-group\">";
 		while($hab = mysqli_fetch_array($habitos)){
-			echo $hab['ID'] . " - " . $hab['Nome'] . " <a href=\"habitos.php/?borrar=" . $hab['ID'] . "\">Borrar</a><br>";
-		}		
+			echo "<li class=\"list-group-item\">" . $hab['ID'] . " - " . $hab['Nome'] . " <a href=\"habitos.php/?borrar=" . $hab['ID'] . "\">Borrar</a><br>";
+	
+		}
+		echo "</ul>";
+	} else {
+		echo "Ainda non se creou ningun habito";
+	}	
 		?>
 		<p>Se precisas axuda, le <a href="https://habitualmente.com/pasos-para-cambiar-de-habitos/">isto</a>.<p>
 		<form name="habito" method="post" action="habitos.php">
 			<input type="text" id="nome" name="nome">
-			<button id="gardar" type="submit">Gardar</button>
+			<button type="gardar" type="submit" class="btn btn-primary">Gardar</button>
 	</form>
 	
 </body>
