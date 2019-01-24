@@ -12,6 +12,4 @@
 		if (!$conn) {
 			die('<p>Esto no esta funcionando: </p>' . mysqli_connect_error());
 			}
-		echo '<p>Conexion OK!</p>';
-
 ?>

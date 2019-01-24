@@ -47,7 +47,7 @@
 		<form name="habito" method="post" action="habitos.php">
 			<input type="text" id="nome" name="nome">
 			<button type="gardar" type="submit" class="btn btn-primary">Gardar</button>
-	</form>
+		</form>
 	
 </body>
 </html>
